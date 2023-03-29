@@ -1,0 +1,14 @@
+
+<app-header-client></app-header-client>
+
+<form (submit)="search(clientName.value)">
+  <input type="text" #clientName>
+  <button type="submit">Search</button>
+</form>
+
+<ul>
+  <li *ngFor="let product of products">
+    {{ product.nom }} - {{ product.description }} - {{ product.prix }}
+  </li>
+</ul>
+<app-footer-client></app-footer-client>
