@@ -9,21 +9,32 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { UserAddComponent } from './user/user-add/user-add.component';
 import { UserDeleteComponent } from './user/user-delete/user-delete.component';
 import { HeaderComponent } from './header/header.component';
+import { ChatComponent } from './chat/chat.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [
-    MenuComponent,
-    DashboardComponent,
-    UserIndexComponent,
-    UserEditComponent,
-    UserAddComponent,
-    UserDeleteComponent,
-    HeaderComponent
-  ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+    declarations: [
+        MenuComponent,
+        DashboardComponent,
+        UserIndexComponent,
+        UserEditComponent,
+        UserAddComponent,
+        UserDeleteComponent,
+        HeaderComponent,
+        ChatComponent,
+        FooterComponent
+    ],
+    exports: [
+        HeaderComponent,
+        FooterComponent
+    ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        FormsModule,
+        ReactiveFormsModule
+    ]
 })
 export class AdminModule { }

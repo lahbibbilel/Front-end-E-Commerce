@@ -1,1 +1,30 @@
-<p>produit-add works!</p>
+
+<div class="container">
+  <div class="card">
+    <div *ngIf="showAlert" [ngClass]="'alert alert-' + alertType" role="alert">
+      {{ alertMessage }}
+    </div>
+    <form class="card-form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="input">
+
+
+        <input type="text" formControlName="nom">
+        <label>Nom:</label>
+        <br>
+        <textarea formControlName="description"></textarea>
+        <label>Description:</label>
+        <br>
+        <input type="number" formControlName="prix">
+        <label>Prix:</label>
+        <br>
+        <label>Image:</label>
+        <input type="file" (change)="onFileSelected($event)">
+      <div class="input" style="display:none">
+        <label>Client Id:</label>
+        <input type="number" formControlName="clientId" value="1">
+      </div></div>
+      <div class="action">
+        <button type="submit" class="action-button">Get started</button>
+      </div>
+    </form>
+  </div></div>

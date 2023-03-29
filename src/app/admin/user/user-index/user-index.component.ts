@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {UserService} from "../../../services/User.service";
 
 @Component({
   selector: 'app-user-index',
@@ -8,15 +8,14 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UserIndexComponent implements OnInit {
 
-  constructor(private http : HttpClient) {
+  users:any;
 
+  constructor(private service:UserService) {}
 
+  ngOnInit() {
+    this.service.getUsers()
+      .subscribe(response => {
+        this.users = response;
+      });
   }
-
-  ngOnInit(): void {
-    this.http.get('http://localhost:8181/api/v1/demo-controller/ok').subscribe(
-      data=>console.log(data),
-      error=>console.log(error)
-  )}
-
 }

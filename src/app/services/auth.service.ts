@@ -17,4 +17,16 @@ export class AuthService {
   {
   return this.http.post<IToken>(this.url,donnees_User)
   }
+
+  isLoggedIn(): boolean {
+    const userString = localStorage.getItem('client');
+    if (userString === null) {
+      return false;
+    }
+    const user = JSON.parse(userString);
+    return user !== null;
+  }
+
+
+
 }

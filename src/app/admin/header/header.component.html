@@ -1,1 +1,96 @@
-<button (click)="logout()">logout</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000000;
+      text-align: center;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #04AA6D;
+    }
+
+    .search-container {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    input[type="text"] {
+      margin: 10px 10px 10px 0;
+    }
+
+    button {
+      margin: 10px 0;
+    }
+  </style>
+
+</head>
+<body>
+
+<ul>
+  <li><a  href="#">Home</a></li>
+  <li><a [routerLink]="'contact-us'">Contact</a></li>
+  <li><a  [routerLink]=""></a></li>
+  <div class="search-container">
+    <input id="nom" [(ngModel)]="nom" type="text" placeholder="Search..">
+    <button id="exempleModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" (click)="search()">Search</button>
+  </div>
+  <li style="float:right"><a class="active" (click)="logout()">logout</a></li>
+</ul>
+
+</body>
+</html>
+
+
+<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="doSomthing()">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="product">
+          <div class="form-group" >
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="recipient-name" value="{{product.nom}}">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">description:</label>
+            <textarea class="form-control" id="message-text">{{product.description}}</textarea>
+          </div>
+          <div class="form-group" >
+            <label for="recipient-name" class="col-form-label">prix:</label>
+            <input  type="text" class="form-control" id="prix" value=" {{product.prix}}">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="doSomthing()" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

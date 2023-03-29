@@ -1,1 +1,81 @@
-<p>home works!</p>
+
+<div class="row">
+  <div class="col-md-4" *ngFor="let product of products">
+    <!-- flip-card-container -->
+    <div class="flip-card-container" style="--hue: 220">
+      <div class="flip-card">
+
+        <div class="card-front" >
+          <figure>
+            <div class="img-bg"></div>
+            <img [src]="sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + product.image)" alt="{{product.nom}}">
+            <figcaption>{{product.nom}}</figcaption>
+          </figure>
+
+          <ul>
+            <li>{{product.description}}</li>
+            <li>{{product.prix}} €</li>
+          </ul>
+        </div>
+
+        <div class="card-back">
+          <figure>
+            <div class="img-bg"></div>
+            <img [src]="getSanitizedImageUrl(product.image)" alt="{{product.nom}}">
+          </figure>
+
+          <button data-whatever="@getbootstrap" data-toggle="modal" data-target="#exampleModal" (click)="openModal(product)" class="btn-primary">ajouter au panier</button>
+
+
+
+          <div class="design-container">
+            <span class="design design--1"></span>
+            <span class="design design--2"></span>
+            <span class="design design--3"></span>
+            <span class="design design--4"></span>
+            <span class="design design--5"></span>
+            <span class="design design--6"></span>
+            <span class="design design--7"></span>
+            <span class="design design--8"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- /flip-card-container -->
+  </div>
+</div>
+
+
+<div class="modal fade"  id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="doSomthing()">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form >
+          <div class="form-group" >
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" disabled class="form-control" id="recipient-name" value="{{selectedProduct?.nom}}">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">description:</label>
+            <input class="form-control" disabled  type="text" id="message-text" value="{{selectedProduct?.description}}">
+          </div>
+          <div class="form-group" >
+            <label for="recipient-name" class="col-form-label">prix:</label>
+            <input  type="text" class="form-control" disabled  id="prix" value=" {{selectedProduct?.prix}} €">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-danger" (click)="doSomthing()" data-dismiss="modal">Close</button>
+             <p><button class="btn-primary"  ><a href="/client">register</a></button></p>
+      </div>
+    </div>
+  </div>
+</div>

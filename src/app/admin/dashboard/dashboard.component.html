@@ -1,1 +1,77 @@
-<p>dashboard works!</p>
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<body>
+<section class="home-section">
+  <div class="home-content">
+    <div class="overview-boxes">
+      <div class="box">
+        <div class="right-side">
+          <div class="box-topic">Coûts totaux de paiements :</div>
+          <div class="number">{{ totalCost }}</div>
+          <div class="indicator">
+            <i class='bx bx-up-arrow-alt'></i>
+            <span class="text"></span>
+          </div>
+        </div>
+        <i class='bx bx-cart-alt cart'></i>
+      </div>
+    </div>
+
+    <div class="sales-boxes">
+      <div class="recent-sales box">
+        <h4>liste des clients inscrire dans le site :</h4>
+
+        <div>
+          <table class="table">
+
+            <thead>
+            <tr>
+              <th>ID:</th>
+              <th>Name:</th>
+              <th>Email:</th>
+              <th>Firstname:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let client of clients">
+              <td>{{ client.id }}</td>
+              <td>{{ client.name }}</td>
+              <td>{{ client.email }}</td>
+              <td>{{ client.firstname }}</td>
+            </tr>
+            </tbody>
+
+          </table>
+        </div> </div>
+      <div class="top-sales box">
+        <div class="title">Liste des produits payés :</div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let payment of payments">
+            <td>{{ payment.id }}</td>
+            <td>{{ payment.product.nom }}</td>
+            <td>{{ payment.product.prix }}</td>
+            <td>{{ payment.product.description }}</td>
+          </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+  </div>
+  <div>
+  </div></div>
+</section>
+</body>
+
+</html>

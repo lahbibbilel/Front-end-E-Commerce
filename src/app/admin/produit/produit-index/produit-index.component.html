@@ -1,1 +1,19 @@
-<p>produit-index works!</p>
+<div class="container" >
+  <div class="card"   *ngFor="let produit of products">
+    <img [src]="getImageUrl(produit.image)"  class="card__image"/>
+    <p class="card__name">{{ produit.nom }}</p>
+    <p class="card__name">{{ produit.prix }}</p>
+    <div class="grid-container">
+
+      <div class="grid-child-posts">
+      </div>
+
+      <div class="grid-child-followers">
+      </div>
+
+    </div>
+    <button [routerLink]="['/admin/produit/add']" class="btn draw-border">add</button>
+    <button (click) = "updateProduct(produit.id)"  class="btn draw-border">update</button>
+    <button (click) = "deleteProduct(produit.id)"  class="btn draw-border">delete</button>
+  </div>
+</div>

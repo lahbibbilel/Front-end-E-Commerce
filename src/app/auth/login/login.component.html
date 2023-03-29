@@ -1,34 +1,73 @@
-<form name="form"
-      #f="ngForm"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style2.css"> -->
+</head>
+<body>
+<div class="topnav">
+  <a routerLink="/home">Home</a>
+  <a routerLink="/produit">About</a>
+  <a routerLink="/contact-us">Contact</a>
+  <input type="text" placeholder="Search..">
+</div>
 
-      (ngSubmit)="f.form.valid && onSubmit()"
->
-  <div>
-    <div>Email :  {{form.email}}</div>
-    <div>Password : {{form.password}}</div>
-  </div>
 
-  <div class="container">
-    <label for="email" ><b>Email : </b></label>
-    <input type="email" placeholder="Enter Your Email " name="email" id="email"  [(ngModel)]="form.email" #email="ngModel" required >
-    <div class="form_error" *ngIf="email.errors && f.submitted">
-      email is required
+
+
+
+
+<main>
+  <div class="row">
+    <div class="colm-logo">
+      <img src="">
+      <h2>LAHBIB helps you connect and share with the people in your life.</h2>
     </div>
-    <label for="password"><b>Password : </b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password"
-           [(ngModel)]="form.password" #password="ngModel" required minlength="8">
+    <div class="colm-form">
+      <div class="form-container">
 
-    <div class="form_error" *ngIf="password.errors && f.submitted">
+        <form name="form"
+              #f="ngForm"
 
-        <div *ngIf="password.errors['required']">
+              (ngSubmit)="f.form.valid && onSubmit()">
+          <label for="email"></label>
+          <input type="email" id="email" name="email" placeholder="Email"  [(ngModel)]="form.email" #email="ngModel" required>
+          <input type="password"    placeholder="Password" name="password" id="password"
+                 [(ngModel)]="form.password" #password="ngModel" required minlength="8">
 
-        password is required
+          <div  *ngIf="email.errors && f.submitted">
+            email is required
+          </div>
+          <div  *ngIf="password.errors && f.submitted">
+
+            <div *ngIf="password.errors['required']">
+              password is required
+            </div>
+            <div *ngIf="password.errors['minlength']">
+              length 8 !
+            </div>
+          </div>
+        <button type="submit" class="btn-login">Login</button>
+
+        <button routerLink="/register" class="btn-new">Create new Account</button>
+        </form>
       </div>
-      <div *ngIf="password.errors['minlength']">
-        length 8 !
-      </div>
+
+      <p><a href="#"><b>Create a Page</b></a> for a celebrity, brand or business.</p>
     </div>
-
-    <button type="submit">Login</button>
   </div>
-</form>
+</main>
+<footer >
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgb(0,0,0);">
+    © 2023 Copyright:
+    <a class="text-white" href="https://github.com/lahbibbilel/Front-end-E-Commerce">LAHBIB</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+</body>
+</html>
